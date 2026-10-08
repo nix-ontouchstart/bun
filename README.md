@@ -3,6 +3,12 @@
 [flake.nix](flake.nix) based on https://github.com/NixOS/nixpkgs/blob/master/pkgs/by-name/bu/bun/package.nix
 
 ```
+bash-5.3# nix profile add github:nix-ontouchstart/bun
+bash-5.3# bun --version
+1.4.2
+```
+
+```
 bash-5.3# nix flake check github:nix-ontouchstart/bun
 bash-5.3# nix flake show github:nix-ontouchstart/bun
 github:nix-ontouchstart/bun/fad2de1f394002e2d9eae528fa048214c40b3383?narHash=sha256-a/w/Chby5URkQoiugELRYo7otewI1DXNhzBZ9HyzTDc%3D
