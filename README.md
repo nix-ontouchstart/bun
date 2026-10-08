@@ -3,6 +3,31 @@
 [flake.nix](flake.nix) based on https://github.com/NixOS/nixpkgs/blob/master/pkgs/by-name/bu/bun/package.nix
 
 ```
+bash-5.3# nix shell "github:nix-ontouchstart/bun"
+bash-5.3# bun --version
+1.4.2
+bash-5.3# exit
+exit
+bash-5.3# bun
+bash: bun: command not found
+```
+
+```
+bash-5.3# nix shell "github:nix-ontouchstart/bun"
+bash-5.3# which bun
+/nix/store/cl24lkqp14p1b9rh0gpaq4rmjack3f2j-bun-1.4.2/bin/bun
+bash-5.3# bun --version
+1.4.2
+bash-5.3# bun -e 'console.log("It works!")'
+It works!
+bash-5.3# exit
+exit
+bash-5.3# which bun
+which: no bun in (/root/.nix-profile/bin:/nix/var/nix/profiles/default/bin:/nix/var/nix/profiles/default/sbin)
+bash-5.3# 
+```
+
+```
 bash-5.3# nix profile add github:nix-ontouchstart/bun
 bash-5.3# bun --version
 1.4.2
