@@ -10,11 +10,11 @@
       system = "aarch64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
       lib = nixpkgs.lib;
-      bunVersion = "1.4.2";
+      bunVersion = "1.4.3";
       sources = {
         "aarch64-linux" = pkgs.fetchurl {
           url = "https://github.com/oven-sh/bun/releases/download/bun-v${bunVersion}/bun-linux-aarch64.zip";
-          hash = "sha256-VDKLvC2cjgyfiSxUTWbFeoO4QTnjSQnl7oF1jxrI/ac=";
+          hash = "sha256-76mBPaXtckI7+Ef5FujSxHwNd2rdlyNUAmp14Q2pqiE=";
         };
       };
       bun = pkgs.stdenvNoCC.mkDerivation {
