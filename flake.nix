@@ -7,28 +7,31 @@
 
   outputs = { self, nixpkgs }:
     let
-      system = "aarch64-linux";
+      system = "aarch64-darwin";
       pkgs = nixpkgs.legacyPackages.${system};
-      lib = nixpkgs.lib;
+      cctools = pkgs.cctools;
+      darwin = pkgs.darwin;
+      lib = pkgs.lib;
+      rcodesign = pkgs.rcodesign;
+      stdenvNoCC = pkgs.stdenvNoCC;
       bunVersion = "1.4.3";
       sources = {
-        "aarch64-linux" = pkgs.fetchurl {
-          url = "https://github.com/oven-sh/bun/releases/download/bun-v${bunVersion}/bun-linux-aarch64.zip";
-          hash = "sha256-76mBPaXtckI7+Ef5FujSxHwNd2rdlyNUAmp14Q2pqiE=";
+        "aarch64-darwin" = pkgs.fetchurl {
+          url = "https://github.com/oven-sh/bun/releases/download/bun-v${bunVersion}/bun-darwin-aarch64.zip";
+          hash = "sha256-gK/UwGm0am+o8+xSC+vHUKeEPkqNW5WD0prUNsAKNAM=";
         };
       };
       bun = pkgs.stdenvNoCC.mkDerivation {
         pname = "bun";
         version = bunVersion;
 
-        src = sources."aarch64-linux";
+        src = sources.${system};
 
         strictDeps = true;
         nativeBuildInputs = [
           pkgs.unzip
           pkgs.installShellFiles
           pkgs.makeWrapper
-          pkgs.autoPatchelfHook
         ];
         buildInputs = [ pkgs.openssl ];
 
